@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Тестовое задание</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="in">
+        <h1 class="in__title">Заказать забор</h1>
+        <div class="wrapper">
+          <div class="in__width">
+            <span class="in__width-subtitle">Длина забора</span>
+            <input
+              type="text"
+              class="input-in input-in__width"
+              placeholder="0"
+            />
+            <span class="in__width-m">метров</span>
+          </div>
+
+          <div class="in__height">
+            <span class="in__height-subtitle">Высота забора</span>
+            <input
+              type="text"
+              class="input-in input-in__height"
+              placeholder="0"
+            />
+            <span class="in__height-m">метров</span>
+          </div>
+
+          <div class="in__select">
+            <span class="in__select-subtitle">Материал забора</span>
+            <div class="__select" data-state="">
+              <div class="__select__title" data-default="Option 0">
+                Выберите материал
+              </div>
+              <div class="__select__content">
+                <input
+                  id="singleSelect0"
+                  class="__select__input"
+                  type="radio"
+                  name="singleSelect"
+                  checked
+                />
+                <label for="singleSelect0" class="__select__label"
+                  >Выберите материал</label
+                >
+                <input
+                  id="singleSelect1"
+                  class="__select__input"
+                  type="radio"
+                  name="singleSelect"
+                />
+                <label for="singleSelect1" class="__select__label"
+                  >Профнастил 400 Р за м²</label
+                >
+                <input
+                  id="singleSelect2"
+                  class="__select__input"
+                  type="radio"
+                  name="singleSelect"
+                />
+                <label for="singleSelect2" class="__select__label"
+                  >Модули 500 Р за м²</label
+                >
+                <input
+                  id="singleSelect3"
+                  class="__select__input"
+                  type="radio"
+                  name="singleSelect"
+                />
+                <label for="singleSelect3" class="__select__label"
+                  >Бетон 700 Р за м²</label
+                >
+                <input
+                  id="singleSelect4"
+                  class="__select__input"
+                  type="radio"
+                  name="singleSelect"
+                />
+                <label for="singleSelect4" class="__select__label"
+                  >Сетка 200 Р за м²</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="in__check">
+            <input
+              type="checkbox"
+              class="input-in__check"
+              name="input-in__check"
+              id="input-in__check"
+            />
+            <label for="input-in__check"> Нужен монтаж </label>
+          </div>
+
+          <div class="in__total">
+            Сумма заказа: <span class="in__total-sum">0 ₽</span>
+          </div>
+
+          <button class="button-in__next button-in__next-false">
+            <span class="button-in__next-text">ДАЛЕЕ</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/main.js"></script>
+  </body>
+</html>
