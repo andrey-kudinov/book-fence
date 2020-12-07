@@ -3,7 +3,7 @@
 const selectSingle = document.querySelector(".__select");
 const selectSingle_title = selectSingle.querySelector(".__select__title");
 const selectSingle_labels = selectSingle.querySelectorAll(".__select__label");
-
+let material = 0;
 // Toggle menu
 selectSingle_title.addEventListener("click", () => {
   if ("active" === selectSingle.getAttribute("data-state")) {
@@ -65,11 +65,13 @@ window.addEventListener("DOMContentLoaded", function () {
 
 const btnIn = document.querySelector(".btn1");
 const btnUser = document.querySelector(".btn2");
-const btnTrue = document.querySelector(".btn3");
-const btnFalse = document.querySelector(".btn4");
-const btnClr = document.querySelector(".btn5");
+const btnOut = document.querySelector(".btn3");
+const btnTrue = document.querySelector(".btn4");
+const btnFalse = document.querySelector(".btn5");
+const btnClr = document.querySelector(".btn6");
 const winIn = document.querySelector(".in");
 const winUser = document.querySelector(".user");
+const winOut = document.querySelector(".out");
 
 const check = document.querySelectorAll(".check");
 const input = document.querySelectorAll(".input");
@@ -77,11 +79,19 @@ const input = document.querySelectorAll(".input");
 btnIn.onclick = function () {
   winIn.style.display = "block";
   winUser.style.display = "none";
+  winOut.style.display = "none";
 };
 
 btnUser.onclick = function () {
   winIn.style.display = "none";
   winUser.style.display = "block";
+  winOut.style.display = "none";
+};
+
+btnOut.onclick = () => {
+  winIn.style.display = "none";
+  winUser.style.display = "none";
+  winOut.style.display = "block";
 };
 
 btnTrue.onclick = () => {
@@ -89,7 +99,7 @@ btnTrue.onclick = () => {
     elem.style.display = "block";
   }
   for (let elem of input) {
-    elem.classList.remove("input-border-false");
+    elem.style.borderColor = "#d7d7d7";
   }
   for (let elem of document.querySelectorAll("span.input-text-false")) {
     elem.style.display = "none";
@@ -98,7 +108,7 @@ btnTrue.onclick = () => {
 
 btnFalse.onclick = () => {
   for (let elem of input) {
-    elem.classList.add("input-border-false");
+    elem.style.borderColor = "#c98e99";
   }
   for (let elem of document.querySelectorAll("span.input-text-false")) {
     elem.style.display = "block";
@@ -110,7 +120,7 @@ btnFalse.onclick = () => {
 
 btnClr.onclick = () => {
   for (let elem of input) {
-    elem.classList.remove("input-border-false");
+    elem.style.borderColor = "#d7d7d7";
   }
   for (let elem of document.querySelectorAll("span.input-text-false")) {
     elem.style.display = "none";
@@ -119,3 +129,88 @@ btnClr.onclick = () => {
     elem.style.display = "none";
   }
 };
+
+// валидация
+
+const inputWidth = document.querySelector(".input-width");
+const inputHeight = document.querySelector(".input-height");
+let btnNext = document.querySelector(".button-in__next");
+let width = inputWidth.value;
+let height = inputHeight.value;
+
+let price;
+let total;
+
+btnNext.onclick = function () {
+  if (inputWidth.value > 0) {
+    document.getElementsByClassName("check")[0].style.display = "block";
+    inputWidth.style.borderColor = ("#d7d7d7");
+    document.getElementsByClassName("input-text-false")[0].style.display =
+      "none";
+      width = inputWidth.value;
+  } else {
+    document.getElementsByClassName("check")[0].style.display = "none";
+    inputWidth.style.borderColor = "#c98e99";
+    document.getElementsByClassName("input-text-false")[0].style.display =
+      "block";
+      width = inputWidth.value;
+  }
+  if (inputHeight.value > 0) {
+    document.getElementsByClassName("check")[1].style.display = "block";
+    inputHeight.style.borderColor = ("#d7d7d7");
+    document.getElementsByClassName("input-text-false")[1].style.display =
+      "none";
+      height = inputHeight.value;
+  } else {
+    document.getElementsByClassName("check")[1].style.display = "none";
+    inputHeight.style.borderColor = "#c98e99";
+    document.getElementsByClassName("input-text-false")[1].style.display =
+      "block";
+      height = inputHeight.value;
+  }
+
+  switch (selectSingle_title.textContent) {
+    case "Профнастил 400 Р за м²":
+      material = 400;
+      break;
+    case "Модули 500 Р за м²":
+      material = 500;
+      break;
+    case "Бетон 700 Р за м²":
+      material = 700;
+      break;
+    case "Сетка 200 Р за м²":
+      material = 200;
+      break;
+    default:
+      material = 0;
+  }
+  if (material != 0) {
+    document.getElementsByClassName("check")[2].style.display = "block";
+  } else {
+    document.getElementsByClassName("check")[2].style.display = "none";
+  }
+  console.log(selectSingle_title.textContent);
+
+  if ((document.querySelector(".input-in__check").checked != true)) {
+    price = material;
+  } else {
+    price = material + 200;
+  }  
+  total = width * height * price;
+  console.log(`длина ${width}`)
+  console.log(`ширина ${height}`)
+  console.log(`монтаж ${document.querySelector(".input-in__check").checked}`)
+  console.log(`цена за м² ${price}`)
+  console.log(`всего ${total}`)
+
+  document.querySelector('.in__total-sum').textContent = '';
+  document.querySelector('.in__total-sum').textContent = `${total} ₽`
+
+  if (total != 0) {
+    document.querySelector('.button-in__next').style.background = "url(../img/svg/btn-active.svg) no-repeat center;"
+    console.log(document.querySelector('.button-in__next').style.background)
+  }
+};
+
+
