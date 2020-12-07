@@ -690,11 +690,21 @@ body {
   color: #a10031;
 }
 
-.button-in__next {
+.button-in__next-false {
   width: 150px;
   height: 50px;
   border: none;
   background: url(../img/svg/btn-false.svg) no-repeat center;
+}
+
+.button-in__next-true {
+  position: relative;
+  left: -154px;
+  width: 150px;
+  height: 50px;
+  border: none;
+  background: url(../img/svg/btn-active.svg) no-repeat center;
+  z-index: -1;
 }
 
 .button-in__next-text {

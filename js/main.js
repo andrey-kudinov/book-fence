@@ -134,56 +134,168 @@ btnClr.onclick = () => {
 
 const inputWidth = document.querySelector(".input-width");
 const inputHeight = document.querySelector(".input-height");
-let btnNext = document.querySelector(".button-in__next");
+let btnNextFalse = document.querySelector(".button-in__next-false");
+let btnNextTrue = document.querySelector(".button-in__next-true");
 let width = inputWidth.value;
 let height = inputHeight.value;
 
 let price;
 let total;
 
-btnNext.onclick = function () {
+// btnNextFalse.onclick = function () {
+//   if (inputWidth.value > 0) {
+//     document.getElementsByClassName("check")[0].style.display = "block";
+//     inputWidth.style.borderColor = "#d7d7d7";
+//     document.getElementsByClassName("input-text-false")[0].style.display =
+//       "none";
+//     width = inputWidth.value;
+//   } else {
+//     document.getElementsByClassName("check")[0].style.display = "none";
+//     inputWidth.style.borderColor = "#c98e99";
+//     document.getElementsByClassName("input-text-false")[0].style.display =
+//       "block";
+//     width = inputWidth.value;
+//   }
+//   if (inputHeight.value > 0) {
+//     document.getElementsByClassName("check")[1].style.display = "block";
+//     inputHeight.style.borderColor = "#d7d7d7";
+//     document.getElementsByClassName("input-text-false")[1].style.display =
+//       "none";
+//     height = inputHeight.value;
+//   } else {
+//     document.getElementsByClassName("check")[1].style.display = "none";
+//     inputHeight.style.borderColor = "#c98e99";
+//     document.getElementsByClassName("input-text-false")[1].style.display =
+//       "block";
+//     height = inputHeight.value;
+//   }
+
+//   switch (selectSingle_title.textContent) {
+//     case "Профнастил 400 Р за м²":
+//       material = 400;
+//       break;
+//     case "Модули 500 Р за м²":
+//       material = 500;
+//       break;
+//     case "Бетон 700 Р за м²":
+//       material = 700;
+//       break;
+//     case "Сетка 200 Р за м²":
+//       material = 200;
+//       break;
+//     default:
+//       material = 0;
+//   }
+//   if (material != 0) {
+//     document.getElementsByClassName("check")[2].style.display = "block";
+//   } else {
+//     document.getElementsByClassName("check")[2].style.display = "none";
+//   }
+//   console.log(selectSingle_title.textContent);
+
+//   if (document.querySelector(".input-in__check").checked != true) {
+//     price = material;
+//   } else {
+//     price = material + 200;
+//   }
+//   total = width * height * price;
+//   console.log(`длина ${width}`);
+//   console.log(`ширина ${height}`);
+//   console.log(`монтаж ${document.querySelector(".input-in__check").checked}`);
+//   console.log(`цена за м² ${price}`);
+//   console.log(`всего ${total}`);
+
+//   document.querySelector(".in__total-sum").textContent = "";
+//   document.querySelector(".in__total-sum").textContent = `${total} ₽`;
+
+//   if (total != 0) {
+//     document.querySelector(".button-in__next-true").style.zIndex = "1";
+//   }
+// };
+
+// валидация высоты
+let validWidthBln = false
+inputWidth.onchange = function validWidth() {
   if (inputWidth.value > 0) {
     document.getElementsByClassName("check")[0].style.display = "block";
-    inputWidth.style.borderColor = ("#d7d7d7");
+    inputWidth.style.borderColor = "#d7d7d7";
     document.getElementsByClassName("input-text-false")[0].style.display =
       "none";
-      width = inputWidth.value;
+    width = inputWidth.value;
+    validWidthBln = true
+    sum()
+    validBtn()
+    validInst()
   } else {
     document.getElementsByClassName("check")[0].style.display = "none";
     inputWidth.style.borderColor = "#c98e99";
     document.getElementsByClassName("input-text-false")[0].style.display =
       "block";
-      width = inputWidth.value;
+    width = inputWidth.value;
+    validWidthBln = false
   }
+}
+// валидация ширины
+let validHeightBln = false
+inputHeight.onchange = function validHeight() {
   if (inputHeight.value > 0) {
     document.getElementsByClassName("check")[1].style.display = "block";
-    inputHeight.style.borderColor = ("#d7d7d7");
+    inputHeight.style.borderColor = "#d7d7d7";
     document.getElementsByClassName("input-text-false")[1].style.display =
       "none";
-      height = inputHeight.value;
+    height = inputHeight.value;
+    validHeightBln = true
+    sum()
+    validBtn()
+    validInst()
   } else {
     document.getElementsByClassName("check")[1].style.display = "none";
     inputHeight.style.borderColor = "#c98e99";
     document.getElementsByClassName("input-text-false")[1].style.display =
       "block";
-      height = inputHeight.value;
+    height = inputHeight.value;
+    validHeightBln = false
   }
+}
+// валидация материала
+for (let elem of document.querySelectorAll(".__select__input")) {
+  elem.onchange = function() {validMaterial()}
+}
 
+let validMaterialBln = false
+function validMaterial() {
   switch (selectSingle_title.textContent) {
     case "Профнастил 400 Р за м²":
       material = 400;
+      validMaterialBln = true
+      sum()
+      validBtn()
+      validInst()
       break;
     case "Модули 500 Р за м²":
       material = 500;
+      validMaterialBln = true
+      sum()
+      validBtn()
+      validInst()
       break;
     case "Бетон 700 Р за м²":
       material = 700;
+      validMaterialBln = true
+      sum()
+      validBtn()
+      validInst()
       break;
     case "Сетка 200 Р за м²":
       material = 200;
+      validMaterialBln = true
+      sum()
+      validBtn()
+      validInst()
       break;
     default:
       material = 0;
+      validMaterialBln = false
   }
   if (material != 0) {
     document.getElementsByClassName("check")[2].style.display = "block";
@@ -191,26 +303,44 @@ btnNext.onclick = function () {
     document.getElementsByClassName("check")[2].style.display = "none";
   }
   console.log(selectSingle_title.textContent);
+  sum()
+  validBtn()
+}
+// валидация монтажа
+document.querySelector('.input-in__check').onchange = function () {validInst()}
 
-  if ((document.querySelector(".input-in__check").checked != true)) {
-    price = material;
-  } else {
-    price = material + 200;
-  }  
-  total = width * height * price;
-  console.log(`длина ${width}`)
-  console.log(`ширина ${height}`)
-  console.log(`монтаж ${document.querySelector(".input-in__check").checked}`)
-  console.log(`цена за м² ${price}`)
-  console.log(`всего ${total}`)
-
-  document.querySelector('.in__total-sum').textContent = '';
-  document.querySelector('.in__total-sum').textContent = `${total} ₽`
-
-  if (total != 0) {
-    document.querySelector('.button-in__next').style.background = "url(../img/svg/btn-active.svg) no-repeat center;"
-    console.log(document.querySelector('.button-in__next').style.background)
+function validInst() {
+  if (document.querySelector(".input-in__check").checked == true) {
+    material += 200;
   }
+  sum()
+}
+// вывод суммы
+function sum() {
+  total = width * height * material;
+  console.log(`длина ${width}`);
+  console.log(`ширина ${height}`);
+  console.log(`монтаж ${document.querySelector(".input-in__check").checked}`);
+  console.log(`цена за м² ${price}`);
+  console.log(`всего ${total}`);
+
+  if (isNaN(total)) {
+    document.querySelector(".in__total-sum").textContent = "0 ₽";
+  } else {
+    document.querySelector(".in__total-sum").textContent = `${total} ₽`;
+  }
+}
+// валидация кнопки
+function validBtn() {
+  if (validWidthBln == true && validHeightBln == true && validMaterialBln == true) {
+    document.querySelector(".button-in__next-true").style.zIndex = "1";
+  }
+}
+
+btnNextTrue.onclick = function () {
+  winIn.style.display = "none";
+  winUser.style.display = "block";
+  winOut.style.display = "none";
 };
 
 
