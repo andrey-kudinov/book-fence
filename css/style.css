@@ -681,14 +681,25 @@ body {
 }
 
 .in__total {
+  display: flex;
   font-size: 24px;
   line-height: 33px;
   margin-bottom: 23px;
+  width: 400px;
+}
+
+.in__total-text {
+  margin-right: 10px;
 }
 
 .in__total-sum {
   color: #a10031;
 }
+.in__total-sum-l {
+  margin-left: 10px;
+  width: 30px;
+}
+
 
 .button-in__next-false {
   width: 150px;
@@ -771,8 +782,8 @@ body {
 .button-user__send {
   width: 230px;
   height: 50px;
-  background: linear-gradient(180deg, #4892ec 0%, #2f79d4 100%);
-  border: 1px solid #226dc8;
+  background: linear-gradient(180deg, #818387 0%, #696B6F 100%);;
+  border: 1px solid;
   box-sizing: border-box;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 6px;
@@ -783,12 +794,16 @@ body {
   left: 130px;
 }
 
-.button-user__send:hover {
-  background-color: #3e8ff2;
+.button-user__send-active {
+  background: linear-gradient(180deg, #4892ec 0%, #2f79d4 100%);
 }
 
-.button-user__send:active {
-  background-color: #256fca;
+.button-user__send-active:hover {
+  background: #3e8ff2;
+}
+
+.button-user__send-active:active {
+  background: #256fca;
 }
 
 .btn-grp {
@@ -817,6 +832,11 @@ body {
   background: wheat;
 }
 
+.btn7,
+.btn8 {
+  background: rgb(199, 236, 226);
+}
+
 .out {
   width: 490px;
   height: 330px;
@@ -828,8 +848,6 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-content: flex-start;
 }
 
 .out__title,
@@ -840,7 +858,7 @@ body {
 }
 
 .out__title {
-  margin-top: 39px;
+  margin-top: 30px;
 }
 
 .out__title,
