@@ -734,13 +734,13 @@ body {
   position: relative;
   display: block;
   height: 93px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .user__mail {
   position: relative;
   height: 93px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .input-user {
@@ -750,12 +750,22 @@ body {
 .user__phone {
   position: relative;
   height: 93px;
-  margin-bottom: 19px;
+  margin-bottom: 10px;
 }
 
 .user__order {
   max-height: 100px;
   margin-bottom: 13px;
+}
+
+.user__width,
+.user__height,
+.user__material {
+  color: #458ae1;
+}
+
+.user__total {
+  color: #a10031;
 }
 
 .button-user__send {
@@ -769,7 +779,7 @@ body {
   color: white;
 
   position: absolute;
-  bottom: 54px;
+  bottom: 40px;
   left: 130px;
 }
 

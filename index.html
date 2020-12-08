@@ -15,6 +15,9 @@
         <button class="btn btn4">true</button>
         <button class="btn btn5">false</button>
         <button class="btn btn6">clear</button>
+        <button class="btn btn7">enter</button>
+        <button class="btn btn8">del</button>
+
       </div>
 
       <div class="in">
@@ -23,9 +26,10 @@
           <div class="in__width">
             <span class="input-subtitle">Длина забора</span>
             <input
-              type="number"
+              type="text"
               class="input input-width"
               placeholder="0"
+              maxlength = "7"
             />
             <span class="in__width-m">метров</span>
             <span class="check"></span>
@@ -35,9 +39,10 @@
           <div class="in__height">
             <span class="input-subtitle">Высота забора</span>
             <input
-              type="number"
+              type="text"
               class="input input-height"
               placeholder="0"
+              maxlength = "5"
             />
             <span class="in__height-m">метров</span>
             <span class="check"></span>
@@ -133,6 +138,7 @@
               type="text"
               class="input input-user"
               placeholder=""
+              maxlength = "20"
             />
             <span class="check"></span>
             <span class="input-text-false">Неверно заполненное поле</span>
@@ -141,9 +147,10 @@
           <div class="user__mail">
             <span class="input-subtitel">Электронная почта</span>
             <input
-              type="text"
+              type="email"
               class="input input-user"
               placeholder=""
+              maxlength = "20"
             />
             <span class="check"></span>
             <span class="input-text-false">Неверно заполненное поле</span>
@@ -152,7 +159,7 @@
           <div class="user__phone">
             <span class="input-subtitel">Телефон</span>
             <input
-              type="text"
+              type="tel"
               class="input input-user input-user__phone"
               placeholder="+7 (___) ___ - __ - __"
             />
@@ -160,9 +167,9 @@
             <span class="input-text-false">Неверно заполненное поле</span>
           </div>
 
-          <div class="user__order">Вы укомплектовали забор<span class="user__width"></span> и <span class="user__height"></span> из материала <span class="user__material"></span> на сумму <span class="user__total"></span></div>
+          <div class="user__order">Вы укомплектовали забор <span class="user__width"></span> и <span class="user__height"></span> из материала <span class="user__material"></span> на сумму <span class="user__total"></span></div>
 
-          <button class="button-user__send">ОТПРАВИТЬ</button>
+          <button type="button" class="button-user__send">ОТПРАВИТЬ</button>
         </div>
       </div>
 

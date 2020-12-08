@@ -24,13 +24,14 @@ for (let i = 0; i < selectSingle_labels.length; i++) {
 // Select script end
 
 // Phone script start
+const userTel = document.querySelector(".input-user__phone");
 
 window.addEventListener("DOMContentLoaded", function () {
   function setCursorPosition(pos, elem) {
     elem.focus();
     if (elem.setSelectionRange) elem.setSelectionRange(pos, pos);
     else if (elem.createTextRange) {
-      var range = elem.createTextRange();
+      let range = elem.createTextRange();
       range.collapse(true);
       range.moveEnd("character", pos);
       range.moveStart("character", pos);
@@ -39,7 +40,7 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 
   function mask(event) {
-    var matrix = "+7 (___) ___ - __ - __",
+    let matrix = "+7 (___) ___ - __ - __",
       i = 0,
       def = matrix.replace(/\D/g, ""),
       val = this.value.replace(/\D/g, "");
@@ -55,10 +56,9 @@ window.addEventListener("DOMContentLoaded", function () {
       if (this.value.length == 2) this.value = "";
     } else setCursorPosition(this.value.length, this);
   }
-  var input = document.querySelector(".input-user__phone");
-  input.addEventListener("input", mask, false);
-  input.addEventListener("focus", mask, false);
-  input.addEventListener("blur", mask, false);
+  userTel.addEventListener("input", mask, false);
+  userTel.addEventListener("focus", mask, false);
+  userTel.addEventListener("blur", mask, false);
 });
 
 // служебное переключение окон и состояний
@@ -69,6 +69,8 @@ const btnOut = document.querySelector(".btn3");
 const btnTrue = document.querySelector(".btn4");
 const btnFalse = document.querySelector(".btn5");
 const btnClr = document.querySelector(".btn6");
+const btnEnt = document.querySelector(".btn7");
+const btnDel = document.querySelector(".btn8");
 const winIn = document.querySelector(".in");
 const winUser = document.querySelector(".user");
 const winOut = document.querySelector(".out");
@@ -130,7 +132,36 @@ btnClr.onclick = () => {
   }
 };
 
-// валидация
+btnEnt.onclick = () => {
+  inputWidth.value = 10
+  validWidth()
+  inputHeight.value = 2
+  validHeight()
+  selectSingle_title.textContent = "Модули 500 Р за м²"
+  validMaterial()
+  document.querySelector(".input-in__check").checked = true
+  inst()
+  sum();
+  userName.value = "Ксения Дукалис"
+  validName ()
+  userMail.value = "mail@mail.com"
+  validMail ()
+  userTel.value = "+7 (777) 888 - 99 - 99"
+  validTel ()
+}
+
+btnDel.onclick = () => {
+  inputWidth.value = ""
+  inputHeight.value = ""
+  selectSingle_title.textContent = "Выберите материал"
+  document.querySelector(".input-in__check").checked = false
+  userName.value = ""
+  userMail.value = ""
+  userTel.value = ""
+  document.querySelector(".in__total-sum").textContent = "0 ₽"
+}
+
+// validation script start
 
 const inputWidth = document.querySelector(".input-width");
 const inputHeight = document.querySelector(".input-height");
@@ -138,164 +169,105 @@ let btnNextFalse = document.querySelector(".button-in__next-false");
 let btnNextTrue = document.querySelector(".button-in__next-true");
 let width = inputWidth.value;
 let height = inputHeight.value;
-
 let price;
 let total;
 
-// btnNextFalse.onclick = function () {
-//   if (inputWidth.value > 0) {
-//     document.getElementsByClassName("check")[0].style.display = "block";
-//     inputWidth.style.borderColor = "#d7d7d7";
-//     document.getElementsByClassName("input-text-false")[0].style.display =
-//       "none";
-//     width = inputWidth.value;
-//   } else {
-//     document.getElementsByClassName("check")[0].style.display = "none";
-//     inputWidth.style.borderColor = "#c98e99";
-//     document.getElementsByClassName("input-text-false")[0].style.display =
-//       "block";
-//     width = inputWidth.value;
-//   }
-//   if (inputHeight.value > 0) {
-//     document.getElementsByClassName("check")[1].style.display = "block";
-//     inputHeight.style.borderColor = "#d7d7d7";
-//     document.getElementsByClassName("input-text-false")[1].style.display =
-//       "none";
-//     height = inputHeight.value;
-//   } else {
-//     document.getElementsByClassName("check")[1].style.display = "none";
-//     inputHeight.style.borderColor = "#c98e99";
-//     document.getElementsByClassName("input-text-false")[1].style.display =
-//       "block";
-//     height = inputHeight.value;
-//   }
+// проверка ширины
+let validWidthBln = false;
+inputWidth.onchange = function () {validWidth()}
 
-//   switch (selectSingle_title.textContent) {
-//     case "Профнастил 400 Р за м²":
-//       material = 400;
-//       break;
-//     case "Модули 500 Р за м²":
-//       material = 500;
-//       break;
-//     case "Бетон 700 Р за м²":
-//       material = 700;
-//       break;
-//     case "Сетка 200 Р за м²":
-//       material = 200;
-//       break;
-//     default:
-//       material = 0;
-//   }
-//   if (material != 0) {
-//     document.getElementsByClassName("check")[2].style.display = "block";
-//   } else {
-//     document.getElementsByClassName("check")[2].style.display = "none";
-//   }
-//   console.log(selectSingle_title.textContent);
-
-//   if (document.querySelector(".input-in__check").checked != true) {
-//     price = material;
-//   } else {
-//     price = material + 200;
-//   }
-//   total = width * height * price;
-//   console.log(`длина ${width}`);
-//   console.log(`ширина ${height}`);
-//   console.log(`монтаж ${document.querySelector(".input-in__check").checked}`);
-//   console.log(`цена за м² ${price}`);
-//   console.log(`всего ${total}`);
-
-//   document.querySelector(".in__total-sum").textContent = "";
-//   document.querySelector(".in__total-sum").textContent = `${total} ₽`;
-
-//   if (total != 0) {
-//     document.querySelector(".button-in__next-true").style.zIndex = "1";
-//   }
-// };
-
-// валидация высоты
-let validWidthBln = false
-inputWidth.onchange = function validWidth() {
+function validWidth() {
+  inputWidth.value = inputWidth.value.replace(",", ".");
+  inputWidth.value = inputWidth.value.replace(/[^\d\s.]/g, "");
   if (inputWidth.value > 0) {
     document.getElementsByClassName("check")[0].style.display = "block";
     inputWidth.style.borderColor = "#d7d7d7";
     document.getElementsByClassName("input-text-false")[0].style.display =
       "none";
     width = inputWidth.value;
-    validWidthBln = true
-    sum()
-    validBtn()
-    validInst()
+    validWidthBln = true;
+    sum();
+    validBtn();
   } else {
     document.getElementsByClassName("check")[0].style.display = "none";
     inputWidth.style.borderColor = "#c98e99";
     document.getElementsByClassName("input-text-false")[0].style.display =
       "block";
     width = inputWidth.value;
-    validWidthBln = false
+    validWidthBln = false;
   }
-}
-// валидация ширины
-let validHeightBln = false
-inputHeight.onchange = function validHeight() {
+};
+// проверка высоты
+let validHeightBln = false;
+inputHeight.onchange = function() {validHeight()}
+
+function validHeight() {
+  inputHeight.value = inputHeight.value.replace(",", ".");
+  inputHeight.value = inputHeight.value.replace(/[^\d\s.]/g, "");
   if (inputHeight.value > 0) {
     document.getElementsByClassName("check")[1].style.display = "block";
     inputHeight.style.borderColor = "#d7d7d7";
     document.getElementsByClassName("input-text-false")[1].style.display =
       "none";
     height = inputHeight.value;
-    validHeightBln = true
-    sum()
-    validBtn()
-    validInst()
+    validHeightBln = true;
+    sum();
+    validBtn();
   } else {
     document.getElementsByClassName("check")[1].style.display = "none";
     inputHeight.style.borderColor = "#c98e99";
     document.getElementsByClassName("input-text-false")[1].style.display =
       "block";
     height = inputHeight.value;
-    validHeightBln = false
+    validHeightBln = false;
   }
-}
-// валидация материала
+};
+// проверка материала
 for (let elem of document.querySelectorAll(".__select__input")) {
-  elem.onchange = function() {validMaterial()}
+  elem.onchange = function () {
+    validMaterial();
+  };
 }
 
-let validMaterialBln = false
+let validMaterialBln = false;
+let materialName;
 function validMaterial() {
   switch (selectSingle_title.textContent) {
     case "Профнастил 400 Р за м²":
       material = 400;
-      validMaterialBln = true
-      sum()
-      validBtn()
-      validInst()
+      validMaterialBln = true;
+      materialName = "профнастил"
+      inst();
+      sum();
+      validBtn();
       break;
     case "Модули 500 Р за м²":
       material = 500;
-      validMaterialBln = true
-      sum()
-      validBtn()
-      validInst()
+      validMaterialBln = true;
+      materialName = "модули"
+      inst();
+      sum();
+      validBtn();
       break;
     case "Бетон 700 Р за м²":
       material = 700;
-      validMaterialBln = true
-      sum()
-      validBtn()
-      validInst()
+      validMaterialBln = true;
+      materialName = "бетон"
+      inst();
+      sum();
+      validBtn();
       break;
     case "Сетка 200 Р за м²":
       material = 200;
-      validMaterialBln = true
-      sum()
-      validBtn()
-      validInst()
+      validMaterialBln = true;
+      materialName = "сетка"
+      inst();
+      sum();
+      validBtn();
       break;
     default:
       material = 0;
-      validMaterialBln = false
+      validMaterialBln = false;
   }
   if (material != 0) {
     document.getElementsByClassName("check")[2].style.display = "block";
@@ -303,26 +275,37 @@ function validMaterial() {
     document.getElementsByClassName("check")[2].style.display = "none";
   }
   console.log(selectSingle_title.textContent);
-  sum()
-  validBtn()
+  sum();
+  validBtn();
 }
-// валидация монтажа
-document.querySelector('.input-in__check').onchange = function () {validInst()}
-
-function validInst() {
-  if (document.querySelector(".input-in__check").checked == true) {
-    material += 200;
+// проверка монтажа
+let install = 0;
+document.querySelector(".input-in__check").onchange = function () {
+  inst();
+  sum();
+};
+function inst() {
+  if (validMaterialBln == false) {
+    install = 0;
+  } else {
+    if (document.querySelector(".input-in__check").checked == true) {
+      install = 200;
+    } else {
+      install = 0;
+    }
   }
-  sum()
 }
-// вывод суммы
+
+// подсчет и вывод суммы
 function sum() {
-  total = width * height * material;
+  total = width * height * (material + install);
   console.log(`длина ${width}`);
   console.log(`ширина ${height}`);
+  console.log(`цена за м² ${material}`);
+  console.log(`стоимость материала ${width * height * material}`);
   console.log(`монтаж ${document.querySelector(".input-in__check").checked}`);
-  console.log(`цена за м² ${price}`);
-  console.log(`всего ${total}`);
+  console.log(`стоимость монтажа ${width * height * install}`);
+  console.log(`ВСЕГО ${total}`);
 
   if (isNaN(total)) {
     document.querySelector(".in__total-sum").textContent = "0 ₽";
@@ -330,17 +313,107 @@ function sum() {
     document.querySelector(".in__total-sum").textContent = `${total} ₽`;
   }
 }
-// валидация кнопки
+// проверка кнопки
 function validBtn() {
-  if (validWidthBln == true && validHeightBln == true && validMaterialBln == true) {
+  if (
+    validWidthBln == true &&
+    validHeightBln == true &&
+    validMaterialBln == true
+  ) {
     document.querySelector(".button-in__next-true").style.zIndex = "1";
   }
 }
 
+// проверка имени
+const userName = document.querySelectorAll(".input-user")[0];
+userName.onchange = function(){validName()}
+
+function validName() {
+  userName.value.length = 5
+  if (userName.value.match(/[А-Яа-яЁё\s]/g) && userName.value != "") {
+    console.log("имя верно");
+    userName.value = userName.value.replace(/[^А-Яа-яЁё\s]/g, "");
+    document.getElementsByClassName("check")[3].style.display = "block";
+    userName.style.borderColor = "#d7d7d7";
+    document.getElementsByClassName("input-text-false")[2].style.display =
+      "none";
+  } else {
+    console.log("имя ошибка");
+    document.getElementsByClassName("check")[3].style.display = "none";
+    userName.style.borderColor = "#c98e99";
+    document.getElementsByClassName("input-text-false")[2].style.display =
+      "block";
+  }
+};
+
+// проверка почты
+const userMail = document.querySelectorAll(".input-user")[1];
+userMail.onchange = function() {validMail()}
+
+function validMail () {
+  if (
+    userMail.value.match(
+      /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    )
+  ) {
+    console.log('почта верно')
+    document.getElementsByClassName("check")[4].style.display = "block";
+    userMail.style.borderColor = "#d7d7d7";
+    document.getElementsByClassName("input-text-false")[3].style.display =
+      "none";
+  } else {
+    console.log("почта ошибка");
+    document.getElementsByClassName("check")[4].style.display = "none";
+    userMail.style.borderColor = "#c98e99";
+    document.getElementsByClassName("input-text-false")[3].style.display =
+      "block";
+  }
+};
+
+// проверка телефона
+userTel.onchange = function() {validTel()}
+
+function validTel (){
+  console.log(`количество символов в номере ${userTel.value.length}`)
+  console.log(`номер ${userTel.value}`)
+
+  if (userTel.value.length == 22) {
+    console.log('телефон верно')
+    document.getElementsByClassName("check")[5].style.display = "block";
+    userTel.style.borderColor = "#d7d7d7";
+    document.getElementsByClassName("input-text-false")[4].style.display =
+      "none";
+  } else {
+    console.log("телефон ошибка");
+    document.getElementsByClassName("check")[5].style.display = "none";
+    userTel.style.borderColor = "#c98e99";
+    document.getElementsByClassName("input-text-false")[4].style.display =
+      "block";
+  }
+}
+
+// validation script end
+
+// переход
 btnNextTrue.onclick = function () {
   winIn.style.display = "none";
   winUser.style.display = "block";
   winOut.style.display = "none";
+  showOrder()
 };
 
+document.querySelector(".button-user__send").onclick = function () {};
 
+// вывод заказа
+
+const userWidth = document.querySelector(".user__width")
+const userHeiht = document.querySelector(".user__height")
+const userMaterial = document.querySelector(".user__material")
+const userTotal = document.querySelector(".user__total")
+
+function showOrder() {
+  userWidth.textContent = `длиной ${inputWidth.value} метров`
+  userHeiht.textContent = `высотой ${inputHeight.value} метров`
+  userMaterial.textContent = `${materialName}`
+  userTotal.textContent = `${total} ₽`;
+}
