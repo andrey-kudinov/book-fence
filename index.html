@@ -17,36 +17,39 @@
         <button class="btn btn6">clear</button>
         <button class="btn btn7">enter</button>
         <button class="btn btn8">del</button>
-
       </div>
 
       <div class="in">
         <h1 class="in__title">Заказать забор</h1>
         <form class="wrapper">
           <div class="in__width">
-            <span class="input-subtitle">Длина забора</span>
-            <input
-              type="text"
-              class="input input-width"
-              placeholder="0"
-              maxlength = "7"
-            />
-            <span class="in__width-m">метров</span>
-            <span class="check"></span>
-            <span class="input-text-false">Неверно заполненное поле</span>
+            <label>
+              <span class="input-subtitle">Длина забора</span>
+              <input
+                type="text"
+                class="input input-width"
+                placeholder="0"
+                maxlength="7"
+              />
+              <span class="in__metric">метров</span>
+              <span class="check"></span>
+              <span class="input-text-false">Неверно заполненное поле</span>
+            </label>
           </div>
 
           <div class="in__height">
-            <span class="input-subtitle">Высота забора</span>
-            <input
-              type="text"
-              class="input input-height"
-              placeholder="0"
-              maxlength = "5"
-            />
-            <span class="in__height-m">метров</span>
-            <span class="check"></span>
-            <span class="input-text-false">Неверно заполненное поле</span>
+            <label>
+              <span class="input-subtitle">Высота забора</span>
+              <input
+                type="text"
+                class="input input-height"
+                placeholder="0"
+                maxlength="5"
+              />
+              <span class="in__metric">метров</span>
+              <span class="check"></span>
+              <span class="input-text-false">Неверно заполненное поле</span>
+            </label>
           </div>
 
           <div class="in__select">
@@ -104,7 +107,7 @@
                 >
               </div>
             </div>
-            <span class="check"></span>
+            <span class="check-material"></span>
           </div>
 
           <div class="in__check">
@@ -132,51 +135,58 @@
         </form>
       </div>
       <div class="user">
-        <h2 class="user__title">Пожалуйста, представьтесь</h1>
+        <h2 class="user__title">Пожалуйста, представьтесь</h2>
         <div class="wrapper">
           <div class="user__name">
-            <span class="input-subtitel">Ваше имя</span>
-            <input
-              type="text"
-              class="input input-user"
-              placeholder=""
-              maxlength = "20"
-            />
-            <span class="check"></span>
-            <span class="input-text-false">Неверно заполненное поле</span>
+            <label>
+              <span class="input-subtitle">Ваше имя</span>
+              <input
+                type="text"
+                class="input input-user"
+                placeholder=""
+                minlength="2"
+                maxlength="20"
+              />
+              <span class="check"></span>
+              <span class="input-text-false">Неверно заполненное поле</span>
+            </label>
           </div>
 
           <div class="user__mail">
-            <span class="input-subtitel">Электронная почта</span>
-            <input
-              type="email"
-              class="input input-user"
-              placeholder=""
-              maxlength = "20"
-            />
-            <span class="check"></span>
-            <span class="input-text-false">Неверно заполненное поле</span>
+            <label>
+              <span class="input-subtitle">Электронная почта</span>
+              <input
+                type="email"
+                class="input input-user"
+                placeholder=""
+                maxlength="20"
+              />
+              <span class="check"></span>
+              <span class="input-text-false">Неверно заполненное поле</span>
+            </label>
           </div>
 
           <div class="user__phone">
-            <span class="input-subtitel">Телефон</span>
-            <input
-              type="tel"
-              class="input input-user input-user__phone"
-              placeholder="+7 (___) ___ - __ - __"
-            />
-            <span class="check"></span>
-            <span class="input-text-false">Неверно заполненное поле</span>
+            <label>
+              <span class="input-subtitle">Телефон</span>
+              <input
+                type="tel"
+                class="input input-user input-user__phone"
+                placeholder="+7 (___) ___ - __ - __"
+              />
+              <span class="check"></span>
+              <span class="input-text-false">Неверно заполненное поле</span>
+            </label>
           </div>
 
           <div class="user__order">
-            Вы укомплектовали забор<br>
+            Вы укомплектовали забор<br />
             <span class="user__width"></span>
-            и 
+            и
             <span class="user__height"></span>
-            из материала 
+            из материала
             <span class="user__material"></span>
-            на сумму 
+            на сумму
             <span class="user__total"></span>
           </div>
 
@@ -186,9 +196,22 @@
 
       <div class="out">
         <div class="out__wrapper">
-          <h2 class="out__title"><span class="out__name">Nicki</span>,<br>заказ <span class="out__number">№2020</span> сформирован!</h2>
-          <div class="out__mail">Мы повторили его комплектацию на почту<br><span class="out__mail-user">mail@mail</span></div>
-          <div class="out__phone">В ближайшее время наш специалист<br>свяжется с вами по телефону<br><span class="out__phone-user">123456</span></div>
+          <h2 class="out__title">
+            <span class="out__name">Уважаемы покупатель</span>,<br />заказ
+            <span class="out__number">№2020</span> сформирован!
+          </h2>
+          <div class="out__mail">
+            Мы повторили его комплектацию на почту<br /><span
+              class="out__mail-user"
+              >mail@mail</span
+            >
+          </div>
+          <div class="out__phone">
+            В ближайшее время наш специалист<br />свяжется с вами по телефону<br /><span
+              class="out__phone-user"
+              >+7 (999) 777 - 88 - 99</span
+            >
+          </div>
         </div>
       </div>
     </div>

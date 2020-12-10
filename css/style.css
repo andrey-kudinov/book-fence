@@ -475,6 +475,7 @@ body {
   min-height: 100vh;
   background-size: cover;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
@@ -519,7 +520,7 @@ body {
   padding-left: 15px;
 }
 
-.input-subtitel {
+.input-subtitle {
   display: block;
 }
 
@@ -546,7 +547,8 @@ body {
   color: #c98e99;
 }
 
-.check {
+.check,
+.check-material {
   display: none;
   width: 20px;
   height: 15px;
@@ -700,7 +702,6 @@ body {
   width: 30px;
 }
 
-
 .button-in__next-false {
   width: 150px;
   height: 50px;
@@ -755,7 +756,7 @@ body {
 }
 
 .input-user {
-  min-width: 310px;
+  width: 310px;
 }
 
 .user__phone {
@@ -765,7 +766,7 @@ body {
 }
 
 .user__order {
-  max-height: 100px;
+  height: 100px;
   margin-bottom: 13px;
 }
 
@@ -782,7 +783,7 @@ body {
 .button-user__send {
   width: 230px;
   height: 50px;
-  background: linear-gradient(180deg, #818387 0%, #696B6F 100%);;
+  background: linear-gradient(180deg, #818387 0%, #696b6f 100%);
   border: 1px solid;
   box-sizing: border-box;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -873,4 +874,116 @@ body {
 .out__mail-user,
 .out__phone-user {
   color: #458ae1;
+}
+
+@media screen and (max-width: 630px) {
+  .main {
+    align-content: flex-start;
+  }
+  .btn-grp {
+    flex-flow: wrap;
+    margin: 20px 20px;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .in,
+  .user,
+  .out {
+    width: auto;
+    height: auto;
+    min-width: 330px;
+  }
+  .in__title,
+  .user__title,
+  .out__title {
+    position: static;
+    margin: 15px auto;
+  }
+  .user__title {
+    width: 250px;
+    text-align: center;
+  }
+  .wrapper {
+    width: auto;
+    height: auto;
+    margin: 20px 20px;
+  }
+  .out__wrapper {
+    width: auto;
+    height: auto;
+    margin: 20px 20px;
+  }
+  .input-subtitle {
+    margin-bottom: 10px;
+  }
+  .input {
+    width: 180px;
+    margin: 0;
+  }
+  .check {
+    right: 15px;
+  }
+  .__select {
+    width: 250px;
+  }
+  .check-material {
+    right: 15px;
+  }
+  .in__total {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .in__total-text {
+    width: 80px;
+  }
+  .in__total-sum {
+  }
+  .in__total-sum-l {
+  }
+  .input-user {
+    width: 250px;
+    margin: 0;
+  }
+  .user__order {
+    height: auto;
+  }
+  .button-user__send {
+    width: 100%;
+    position: static;
+  }
+  .out__mail,
+  .out__phone {
+    width: 100%;
+    margin: 20px auto;
+  }
+}
+@media screen and (max-width: 360px) {
+  .input-subtitle {
+    width: auto;
+    margin-bottom: 10px;
+  }
+  .input {
+    width: 150px;
+    margin: 0;
+  }
+  .check {
+    right: 30px;
+  }
+  .__select {
+    width: 250px;
+  }
+  .check-material {
+    right: 30px;
+  }
+  .input-user {
+    width: 200px;
+    margin: 0;
+  }
+  .button-in__next-true {
+    left: 0px;
+    bottom: 50px;
+  }
+
 }
