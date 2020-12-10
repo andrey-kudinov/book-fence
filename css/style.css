@@ -1054,13 +1054,14 @@ body {
   .in__title,
   .user__title,
   .out__title {
+    text-align: center;
     position: static;
     margin: 15px auto;
   }
   .user__title {
     width: 250px;
-    text-align: center;
   }
+  
   .wrapper {
     width: auto;
     height: auto;
