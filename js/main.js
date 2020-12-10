@@ -63,112 +63,112 @@ window.addEventListener("DOMContentLoaded", function () {
 
 // служебное переключение окон и состояний
 
-const btnIn = document.querySelector(".btn1");
-const btnUser = document.querySelector(".btn2");
-const btnOut = document.querySelector(".btn3");
-const btnTrue = document.querySelector(".btn4");
-const btnFalse = document.querySelector(".btn5");
-const btnClr = document.querySelector(".btn6");
-const btnEnt = document.querySelector(".btn7");
-const btnDel = document.querySelector(".btn8");
-const winIn = document.querySelector(".in");
-const winUser = document.querySelector(".user");
-const winOut = document.querySelector(".out");
+// const btnIn = document.querySelector(".btn1");
+// const btnUser = document.querySelector(".btn2");
+// const btnOut = document.querySelector(".btn3");
+// const btnTrue = document.querySelector(".btn4");
+// const btnFalse = document.querySelector(".btn5");
+// const btnClr = document.querySelector(".btn6");
+// const btnEnt = document.querySelector(".btn7");
+// const btnDel = document.querySelector(".btn8");
+// const winIn = document.querySelector(".in");
+// const winUser = document.querySelector(".user");
+// const winOut = document.querySelector(".out");
 
-const check = document.querySelectorAll(".check");
-const input = document.querySelectorAll(".input");
+// const check = document.querySelectorAll(".check");
+// const input = document.querySelectorAll(".input");
 
-btnIn.onclick = function () {
-  winIn.style.display = "block";
-  winUser.style.display = "none";
-  winOut.style.display = "none";
-};
+// btnIn.onclick = function () {
+//   winIn.style.display = "block";
+//   winUser.style.display = "none";
+//   winOut.style.display = "none";
+// };
 
-btnUser.onclick = function () {
-  winIn.style.display = "none";
-  winUser.style.display = "block";
-  winOut.style.display = "none";
-};
+// btnUser.onclick = function () {
+//   winIn.style.display = "none";
+//   winUser.style.display = "block";
+//   winOut.style.display = "none";
+// };
 
-btnOut.onclick = () => {
-  winIn.style.display = "none";
-  winUser.style.display = "none";
-  winOut.style.display = "block";
-};
+// btnOut.onclick = () => {
+//   winIn.style.display = "none";
+//   winUser.style.display = "none";
+//   winOut.style.display = "block";
+// };
 
-btnTrue.onclick = () => {
-  for (let elem of check) {
-    elem.style.display = "block";
-  }
-  for (let elem of input) {
-    elem.style.borderColor = "#d7d7d7";
-  }
-  for (let elem of document.querySelectorAll("span.input-text-false")) {
-    elem.style.display = "none";
-  }
-  document.querySelector(".check-material").style.display = "block";
-};
+// btnTrue.onclick = () => {
+//   for (let elem of check) {
+//     elem.style.display = "block";
+//   }
+//   for (let elem of input) {
+//     elem.style.borderColor = "#d7d7d7";
+//   }
+//   for (let elem of document.querySelectorAll("span.input-text-false")) {
+//     elem.style.display = "none";
+//   }
+//   document.querySelector(".check-material").style.display = "block";
+// };
 
-btnFalse.onclick = () => {
-  for (let elem of input) {
-    elem.style.borderColor = "#c98e99";
-  }
-  for (let elem of document.querySelectorAll("span.input-text-false")) {
-    elem.style.display = "block";
-  }
-  for (let elem of check) {
-    elem.style.display = "none";
-  }
-  document.querySelector(".check-material").style.display = "none";
-};
+// btnFalse.onclick = () => {
+//   for (let elem of input) {
+//     elem.style.borderColor = "#c98e99";
+//   }
+//   for (let elem of document.querySelectorAll("span.input-text-false")) {
+//     elem.style.display = "block";
+//   }
+//   for (let elem of check) {
+//     elem.style.display = "none";
+//   }
+//   document.querySelector(".check-material").style.display = "none";
+// };
 
-btnClr.onclick = () => {
-  for (let elem of input) {
-    elem.style.borderColor = "#d7d7d7";
-  }
-  for (let elem of document.querySelectorAll("span.input-text-false")) {
-    elem.style.display = "none";
-  }
-  for (let elem of check) {
-    elem.style.display = "none";
-  }
-  document.querySelector(".check-material").style.display = "none";
-};
+// btnClr.onclick = () => {
+//   for (let elem of input) {
+//     elem.style.borderColor = "#d7d7d7";
+//   }
+//   for (let elem of document.querySelectorAll("span.input-text-false")) {
+//     elem.style.display = "none";
+//   }
+//   for (let elem of check) {
+//     elem.style.display = "none";
+//   }
+//   document.querySelector(".check-material").style.display = "none";
+// };
 
-btnEnt.onclick = () => {
-  inputWidth.value = 10;
-  inputHeight.value = 2;
-  selectSingle_title.textContent = "Модули 500 Р за м²";
-  document.querySelector(".input-in__check").checked = true;
-  validWidth();
-  validHeight();
-  validMaterial();
-  inst();
-  sum();
-  userName.value = "Ксения Дукалис";
-  userMail.value = "mail@mail.com";
-  userTel.value = "+7 (777) 888 - 99 - 99";
-  validName();
-  validMail();
-  validTel();
-  showOrder()
-  validBtnSend();
-};
+// btnEnt.onclick = () => {
+//   inputWidth.value = 10;
+//   inputHeight.value = 2;
+//   selectSingle_title.textContent = "Модули 500 Р за м²";
+//   document.querySelector(".input-in__check").checked = true;
+//   validWidth();
+//   validHeight();
+//   validMaterial();
+//   inst();
+//   sum();
+//   userName.value = "Ксения Дукалис";
+//   userMail.value = "mail@mail.com";
+//   userTel.value = "+7 (777) 888 - 99 - 99";
+//   validName();
+//   validMail();
+//   validTel();
+//   showOrder()
+//   validBtnSend();
+// };
 
-btnDel.onclick = () => {
-  inputWidth.value = "";
-  inputHeight.value = "";
-  selectSingle_title.textContent = "Выберите материал";
-  document.querySelector(".input-in__check").checked = false;
-  userName.value = "";
-  userMail.value = "";
-  userTel.value = "";
-  document.querySelector(".in__total-sum").textContent = "0 ₽";
-  userWidth.textContent = "";
-  userHeiht.textContent = "";
-  userMaterial.textContent = "";
-  userTotal.textContent = "";
-};
+// btnDel.onclick = () => {
+//   inputWidth.value = "";
+//   inputHeight.value = "";
+//   selectSingle_title.textContent = "Выберите материал";
+//   document.querySelector(".input-in__check").checked = false;
+//   userName.value = "";
+//   userMail.value = "";
+//   userTel.value = "";
+//   document.querySelector(".in__total-sum").textContent = "0 ₽";
+//   userWidth.textContent = "";
+//   userHeiht.textContent = "";
+//   userMaterial.textContent = "";
+//   userTotal.textContent = "";
+// };
 
 // validation script start
 

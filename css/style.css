@@ -807,6 +807,8 @@ body {
   background: #256fca;
 }
 
+/*
+служебные кнопки
 .btn-grp {
   display: flex;
   flex-direction: column;
@@ -837,6 +839,7 @@ body {
 .btn8 {
   background: rgb(199, 236, 226);
 }
+*/
 
 .out {
   width: 490px;
@@ -937,10 +940,6 @@ body {
   }
   .in__total-text {
     width: 80px;
-  }
-  .in__total-sum {
-  }
-  .in__total-sum-l {
   }
   .input-user {
     width: 250px;
