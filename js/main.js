@@ -1,67 +1,4 @@
-// Select script start
-
-const selectSingle = document.querySelector(".__select");
-const selectSingle_title = selectSingle.querySelector(".__select__title");
-const selectSingle_labels = selectSingle.querySelectorAll(".__select__label");
-let material = 0;
-// Toggle menu
-selectSingle_title.addEventListener("click", () => {
-  if ("active" === selectSingle.getAttribute("data-state")) {
-    selectSingle.setAttribute("data-state", "");
-  } else {
-    selectSingle.setAttribute("data-state", "active");
-  }
-});
-
-// Close when click to option
-for (let i = 0; i < selectSingle_labels.length; i++) {
-  selectSingle_labels[i].addEventListener("click", (evt) => {
-    selectSingle_title.textContent = evt.target.textContent;
-    selectSingle.setAttribute("data-state", "");
-  });
-}
-
-// Select script end
-
-// Phone script start
-const userTel = document.querySelector(".input-user__phone");
-
-window.addEventListener("DOMContentLoaded", function () {
-  function setCursorPosition(pos, elem) {
-    elem.focus();
-    if (elem.setSelectionRange) elem.setSelectionRange(pos, pos);
-    else if (elem.createTextRange) {
-      let range = elem.createTextRange();
-      range.collapse(true);
-      range.moveEnd("character", pos);
-      range.moveStart("character", pos);
-      range.select();
-    }
-  }
-
-  function mask(event) {
-    let matrix = "+7 (___) ___ - __ - __",
-      i = 0,
-      def = matrix.replace(/\D/g, ""),
-      val = this.value.replace(/\D/g, "");
-    if (def.length >= val.length) val = def;
-    this.value = matrix.replace(/./g, function (a) {
-      return /[_\d]/.test(a) && i < val.length
-        ? val.charAt(i++)
-        : i >= val.length
-        ? ""
-        : a;
-    });
-    if (event.type == "blur") {
-      if (this.value.length == 2) this.value = "";
-    } else setCursorPosition(this.value.length, this);
-  }
-  userTel.addEventListener("input", mask, false);
-  userTel.addEventListener("focus", mask, false);
-  userTel.addEventListener("blur", mask, false);
-});
-
-// служебное переключение окон и состояний
+// служебные кнопки переключение окон и состояний
 
 // const btnIn = document.querySelector(".btn1");
 // const btnUser = document.querySelector(".btn2");
@@ -71,12 +8,6 @@ window.addEventListener("DOMContentLoaded", function () {
 // const btnClr = document.querySelector(".btn6");
 // const btnEnt = document.querySelector(".btn7");
 // const btnDel = document.querySelector(".btn8");
-// const winIn = document.querySelector(".in");
-// const winUser = document.querySelector(".user");
-// const winOut = document.querySelector(".out");
-
-// const check = document.querySelectorAll(".check");
-// const input = document.querySelectorAll(".input");
 
 // btnIn.onclick = function () {
 //   winIn.style.display = "block";
@@ -170,6 +101,69 @@ window.addEventListener("DOMContentLoaded", function () {
 //   userTotal.textContent = "";
 // };
 
+// Select script start
+
+const selectSingle = document.querySelector(".__select");
+const selectSingle_title = selectSingle.querySelector(".__select__title");
+const selectSingle_labels = selectSingle.querySelectorAll(".__select__label");
+let material = 0;
+// Toggle menu
+selectSingle_title.addEventListener("click", () => {
+  if ("active" === selectSingle.getAttribute("data-state")) {
+    selectSingle.setAttribute("data-state", "");
+  } else {
+    selectSingle.setAttribute("data-state", "active");
+  }
+});
+
+// Close when click to option
+for (let i = 0; i < selectSingle_labels.length; i++) {
+  selectSingle_labels[i].addEventListener("click", (evt) => {
+    selectSingle_title.textContent = evt.target.textContent;
+    selectSingle.setAttribute("data-state", "");
+  });
+}
+
+// Select script end
+
+// Phone script start
+const userTel = document.querySelector(".input-user__phone");
+
+window.addEventListener("DOMContentLoaded", function () {
+  function setCursorPosition(pos, elem) {
+    elem.focus();
+    if (elem.setSelectionRange) elem.setSelectionRange(pos, pos);
+    else if (elem.createTextRange) {
+      let range = elem.createTextRange();
+      range.collapse(true);
+      range.moveEnd("character", pos);
+      range.moveStart("character", pos);
+      range.select();
+    }
+  }
+
+  function mask(event) {
+    let matrix = "+7 (___) ___ - __ - __",
+      i = 0,
+      def = matrix.replace(/\D/g, ""),
+      val = this.value.replace(/\D/g, "");
+    if (def.length >= val.length) val = def;
+    this.value = matrix.replace(/./g, function (a) {
+      return /[_\d]/.test(a) && i < val.length
+        ? val.charAt(i++)
+        : i >= val.length
+        ? ""
+        : a;
+    });
+    if (event.type == "blur") {
+      if (this.value.length == 2) this.value = "";
+    } else setCursorPosition(this.value.length, this);
+  }
+  userTel.addEventListener("input", mask, false);
+  userTel.addEventListener("focus", mask, false);
+  userTel.addEventListener("blur", mask, false);
+});
+
 // validation script start
 
 const inputWidth = document.querySelector(".input-width");
@@ -182,6 +176,11 @@ const userHeiht = document.querySelector(".user__height");
 const userMaterial = document.querySelector(".user__material");
 const userTotal = document.querySelector(".user__total");
 const userMail = document.querySelectorAll(".input-user")[1];
+const winIn = document.querySelector(".in");
+const winUser = document.querySelector(".user");
+const winOut = document.querySelector(".out");
+const check = document.querySelectorAll(".check");
+const input = document.querySelectorAll(".input");
 
 let width;
 let height;
@@ -387,16 +386,17 @@ userName.onchange = function () {
 };
 
 function validName() {
-  if (userName.value.match(/[А-Яа-яЁё\s]/g) && userName.value != "") {
+  userName.value = userName.value.replace(/[^А-Яа-яЁё\s]/g, "");
+  if (userName.value != "" && userName.value.length > 1) {
     console.log("имя верно");
-    userName.value = userName.value.replace(/[^А-Яа-яЁё\s]/g, "");
     validDisplayTrue(2);
     validNameBln = true;
     validBtnSend();
   } else {
     console.log("имя ошибка");
-    validDisplayFalse(2)
+    validDisplayFalse(2);
     validNameBln = false;
+    validBtnSend();
   }
 }
 
@@ -419,6 +419,7 @@ function validMail() {
     console.log("почта ошибка");
     validDisplayFalse(3);
     validMailBln = false;
+    validBtnSend();
   }
 }
 
@@ -439,19 +440,22 @@ function validTel() {
     console.log("телефон ошибка");
     validDisplayFalse(4);
     validTelBln = false;
+    validBtnSend();
   }
 }
 
 function validBtnSend() {
   if (validNameBln == true && validMailBln == true && validTelBln == true) {
-    document
-      .querySelector(".button-user__send")
-      .classList.add("button-user__send-active");
+    document.querySelector(".button-user__send").disabled = false;
     document.querySelector(".out__name").textContent = userName.value;
-    document.querySelector(".out__number").textContent = `№${getRandomInt(9999)}`;
+    document.querySelector(".out__number").textContent = `№${getRandomInt(
+      9999
+    )}`;
     document.querySelector(".out__mail-user").textContent = userMail.value;
     document.querySelector(".out__phone-user").textContent =
       "+7 (999) 000 - 11 - 22";
+  } else {
+    document.querySelector(".button-user__send").disabled = true;
   }
 }
 
@@ -469,6 +473,40 @@ document.querySelector(".button-user__send").onclick = function () {
   winIn.style.display = "none";
   winUser.style.display = "none";
   winOut.style.display = "block";
+};
+
+document.querySelector(".button-user__back").onclick = function () {
+  winIn.style.display = "block";
+  winUser.style.display = "none";
+  winOut.style.display = "none";
+};
+
+document.querySelector(".button-out__close").onclick = function () {
+  winIn.style.display = "block";
+  winUser.style.display = "none";
+  winOut.style.display = "none";
+  inputWidth.value = inputHeight.value = "";
+  selectSingle_title.textContent = "Выберите материал";
+  document.querySelector(".input-in__check").checked = false;
+  userName.value = userMail.value = userTel.value = "";
+  document.querySelector(".in__total-sum").textContent = "0 ₽";
+  userWidth.textContent = userHeiht.textContent = userMaterial.textContent = userTotal.textContent =
+    "";
+  material = install = 0;
+  for (let elem of input) {
+    elem.style.borderColor = "#d7d7d7";
+  }
+  for (let elem of document.querySelectorAll("span.input-text-false")) {
+    elem.style.display = "none";
+  }
+  for (let elem of check) {
+    elem.style.display = "none";
+  }
+  document.querySelector(".check-material").style.display = "none";
+  validWidthBln = validHeightBln = validMaterialBln = false;
+  validNameBln = validMailBln = validTelBln = false;
+  validBtnNext();
+  validBtnSend();
 };
 
 // вывод заказа

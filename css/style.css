@@ -479,6 +479,39 @@ body {
   justify-content: center;
   align-items: center;
 }
+/*
+служебные кнопки переключения кнопок и состояний
+.btn-grp {
+  display: flex;
+  flex-direction: column;
+  margin-right: 40px;
+}
+
+.btn {
+  width: 70px;
+  height: 40px;
+  margin-bottom: 5px;
+  transition: 0.3s;
+}
+
+.btn:active,
+.btn:hover,
+.btn:focus {
+  border: 3px solid orange;
+  font-size: 22px;
+}
+
+.btn1,
+.btn2,
+.btn3 {
+  background: wheat;
+}
+
+.btn7,
+.btn8 {
+  background: rgb(199, 236, 226);
+}
+*/
 
 .in {
   width: 490px;
@@ -733,6 +766,26 @@ body {
   display: none;
 }
 
+.button-user__back {
+  position: absolute;
+  top: -20px;
+  padding-left: 20px;
+
+  font-size: 13px;
+  line-height: 18px;
+  text-decoration-line: underline;
+  background: transparent url(../img/svg/arrow-back.svg) no-repeat 5%;
+  color: white;
+  border: none;
+  transition: 0.2s;
+}
+
+.button-user__back:active,
+.button-user__back:hover,
+.button-user__back:focus {
+  background: transparent url(../img/svg/arrow-back.svg) no-repeat 0%;
+}
+
 .user__title {
   max-width: 405px;
   position: relative;
@@ -783,63 +836,36 @@ body {
 .button-user__send {
   width: 230px;
   height: 50px;
-  background: linear-gradient(180deg, #818387 0%, #696b6f 100%);
+  position: absolute;
+  bottom: 40px;
+  left: 130px;
+  background: linear-gradient(180deg, #4892ec 0%, #2f79d4 100%);
   border: 1px solid;
   box-sizing: border-box;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 6px;
   color: white;
-
-  position: absolute;
-  bottom: 40px;
-  left: 130px;
 }
 
-.button-user__send-active {
-  background: linear-gradient(180deg, #4892ec 0%, #2f79d4 100%);
-}
-
-.button-user__send-active:hover {
+.button-user__send:hover {
   background: #3e8ff2;
 }
 
-.button-user__send-active:active {
+.button-user__send:active {
   background: #256fca;
 }
 
-/*
-служебные кнопки
-.btn-grp {
-  display: flex;
-  flex-direction: column;
-  margin-right: 40px;
+.button-user__send:disabled {
+  background: linear-gradient(180deg, #818387 0%, #696b6f 100%);
 }
 
-.btn {
-  width: 70px;
-  height: 40px;
-  margin-bottom: 5px;
-  transition: 0.3s;
+.button-user__send[disabled]:hover {
+  background: linear-gradient(180deg, #818387 0%, #696b6f 100%);
 }
 
-.btn:active,
-.btn:hover,
-.btn:focus {
-  border: 3px solid orange;
-  font-size: 22px;
+.button-user__send[disabled]:active {
+  background: linear-gradient(180deg, #818387 0%, #696b6f 100%);
 }
-
-.btn1,
-.btn2,
-.btn3 {
-  background: wheat;
-}
-
-.btn7,
-.btn8 {
-  background: rgb(199, 236, 226);
-}
-*/
 
 .out {
   width: 490px;
@@ -852,6 +878,27 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.button-out__close {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  font-size: 13px;
+  line-height: 18px;
+  text-decoration-line: underline;
+  background: transparent;
+  color: white;
+  border: none;
+  transition: 0.2s;
+}
+
+.button-out__close:active,
+.button-out__close:hover,
+.button-out__close:focus {
+  font-size: 14px;
+  line-height: 18px;
 }
 
 .out__title,
@@ -881,7 +928,7 @@ body {
 
 @media screen and (max-width: 630px) {
   .main {
-    align-content: flex-start;
+    align-content: center;
   }
   .btn-grp {
     flex-flow: wrap;
@@ -984,5 +1031,4 @@ body {
     left: 0px;
     bottom: 50px;
   }
-
 }
