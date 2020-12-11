@@ -346,7 +346,7 @@ function sum() {
   if (isNaN(total)) {
     document.querySelector(".in__total-sum").textContent = "0 ₽";
   } else {
-    if (total < 100000000) {
+    if (total < 1000000000) {
       document.querySelector(
         ".in__total-sum"
       ).textContent = `${total.toLocaleString("ru-RU", {
@@ -490,6 +490,7 @@ document.querySelector(".button-out__close").onclick = function () {
   document.querySelector(".input-in__check").checked = false;
   userName.value = userMail.value = userTel.value = "";
   document.querySelector(".in__total-sum").textContent = "0 ₽";
+  document.querySelector(".in__total-sum-l").style.background = "";
   userWidth.textContent = userHeiht.textContent = userMaterial.textContent = userTotal.textContent =
     "";
   material = install = 0;

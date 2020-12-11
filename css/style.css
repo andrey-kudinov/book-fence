@@ -883,13 +883,13 @@ body {
   position: relative;
   display: block;
   height: 93px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .user__mail {
   position: relative;
   height: 93px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .input-user {
@@ -899,7 +899,7 @@ body {
 .user__phone {
   position: relative;
   height: 93px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .user__order {
@@ -1098,6 +1098,14 @@ body {
   .in__total-text {
     width: 80px;
   }
+  .in__total-sum {
+    align-self: center;
+    margin-left: 20px;
+  }
+  .in__total-sum-l {
+    align-self: center;
+    height: 30px;
+  }
   .input-user {
     width: 250px;
     margin: 0;
@@ -1113,6 +1121,9 @@ body {
   .out__phone {
     width: 100%;
     margin: 20px auto;
+  }
+  .button-out__close {
+    top: -40px;
   }
 }
 @media screen and (max-width: 360px) {
