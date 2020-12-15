@@ -164,6 +164,8 @@ window.addEventListener("DOMContentLoaded", function () {
   userTel.addEventListener("blur", mask, false);
 });
 
+// Phone script end
+
 // validation script start
 
 const inputWidth = document.querySelector(".input-width");
@@ -352,7 +354,7 @@ function sum() {
       ).textContent = `${total.toLocaleString("ru-RU", {
         useGrouping: true,
       })} ₽`;
-      document.querySelector(".in__total-sum-l").style.background = "";
+      document.querySelector(".in__total-sum-l").style.background = "none";
     } else {
       let totalMln;
       totalMln = Math.round(total / 1000000);
@@ -361,8 +363,7 @@ function sum() {
       ).textContent = `${totalMln.toLocaleString("ru-RU", {
         useGrouping: true,
       })}`;
-      document.querySelector(".in__total-sum-l").style.background =
-        "url(../img/svg/lemon.svg) no-repeat";
+      document.querySelector(".in__total-sum-l").style.display = "block";
     }
   }
 }

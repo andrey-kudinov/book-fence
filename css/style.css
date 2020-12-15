@@ -814,6 +814,8 @@ body {
 .in__total-sum-l {
   margin-left: 10px;
   width: 30px;
+  background: url(../img/svg/lemon.svg) no-repeat center;
+  display: none;
 }
 
 .button-in__next-false {
